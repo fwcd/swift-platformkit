@@ -12,11 +12,11 @@ public protocol PlatformViewControllerRepresentable: UIViewControllerRepresentab
 }
 
 public extension PlatformViewControllerRepresentable where PlatformViewControllerType == UIViewControllerType {
-    func makeUIView(context: Context) -> PlatformViewControllerType {
+    func makeUIViewController(context: Context) -> PlatformViewControllerType {
         makePlatformViewController(context: context)
     }
     
-    func updateUIView(_ view: PlatformViewControllerType, context: Context) {
+    func updateUIViewController(_ view: PlatformViewControllerType, context: Context) {
         updatePlatformViewController(view, context: context)
     }
 }
@@ -33,11 +33,11 @@ public protocol PlatformViewControllerRepresentable: NSViewControllerRepresentab
 }
 
 public extension PlatformViewControllerRepresentable where PlatformViewControllerType == NSViewControllerType {
-    func makeNSView(context: Context) -> PlatformViewControllerType {
+    func makeNSViewController(context: Context) -> PlatformViewControllerType {
         makePlatformViewController(context: context)
     }
     
-    func updateNSView(_ view: PlatformViewControllerType, context: Context) {
+    func updateNSViewController(_ view: PlatformViewControllerType, context: Context) {
         updatePlatformViewController(view, context: context)
     }
 }
