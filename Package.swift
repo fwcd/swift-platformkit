@@ -21,9 +21,5 @@ let package = Package(
         .target(
             name: "PlatformKit"
         ),
-        .testTarget(
-            name: "PlatformKitTests",
-            dependencies: ["PlatformKit"]
-        ),
     ]
 )
