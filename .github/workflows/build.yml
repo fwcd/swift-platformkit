@@ -1,0 +1,21 @@
+name: Build
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        platform: ['iOS', 'macOS']
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build
+      run: xcodebuild build -scheme swift-platformkit -destination 'generic/platform=${{ matrix.platform }}'
