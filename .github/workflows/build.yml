@@ -13,7 +13,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        platform: ['iOS', 'macOS', 'visionOS']
+        platform: ['iOS', 'macOS', 'visionOS', 'watchOS']
 
     steps:
     - uses: actions/checkout@v4

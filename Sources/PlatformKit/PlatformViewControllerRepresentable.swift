@@ -1,6 +1,6 @@
 import SwiftUI
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 
 public protocol PlatformViewControllerRepresentable: UIViewControllerRepresentable {
     associatedtype PlatformViewControllerType: UIViewController
