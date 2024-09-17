@@ -2,13 +2,13 @@ import SwiftUI
 
 #if canImport(UIKit) && !os(watchOS)
 
-public protocol PlatformViewRepresentable: UIViewRepresentable {
+@MainActor public protocol PlatformViewRepresentable: UIViewRepresentable {
     associatedtype PlatformViewType: UIView
     typealias Context = UIViewRepresentableContext<Self>
 
-    func makePlatformView(context: Context) -> PlatformViewType
+    @MainActor func makePlatformView(context: Context) -> PlatformViewType
     
-    func updatePlatformView(_ view: PlatformViewType, context: Context)
+    @MainActor func updatePlatformView(_ view: PlatformViewType, context: Context)
 }
 
 public extension PlatformViewRepresentable where PlatformViewType == UIViewType {
@@ -23,13 +23,13 @@ public extension PlatformViewRepresentable where PlatformViewType == UIViewType 
 
 #elseif canImport(AppKit)
 
-public protocol PlatformViewRepresentable: NSViewRepresentable {
+@MainActor public protocol PlatformViewRepresentable: NSViewRepresentable {
     associatedtype PlatformViewType: NSView
     typealias Context = NSViewRepresentableContext<Self>
 
-    func makePlatformView(context: Context) -> PlatformViewType
+    @MainActor func makePlatformView(context: Context) -> PlatformViewType
     
-    func updatePlatformView(_ view: PlatformViewType, context: Context)
+    @MainActor func updatePlatformView(_ view: PlatformViewType, context: Context)
 }
 
 public extension PlatformViewRepresentable where PlatformViewType == NSViewType {

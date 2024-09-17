@@ -2,13 +2,13 @@ import SwiftUI
 
 #if canImport(UIKit) && !os(watchOS)
 
-public protocol PlatformViewControllerRepresentable: UIViewControllerRepresentable {
+@MainActor public protocol PlatformViewControllerRepresentable: UIViewControllerRepresentable {
     associatedtype PlatformViewControllerType: UIViewController
     typealias Context = UIViewControllerRepresentableContext<Self>
 
-    func makePlatformViewController(context: Context) -> PlatformViewControllerType
+    @MainActor func makePlatformViewController(context: Context) -> PlatformViewControllerType
     
-    func updatePlatformViewController(_ view: PlatformViewControllerType, context: Context)
+    @MainActor func updatePlatformViewController(_ view: PlatformViewControllerType, context: Context)
 }
 
 public extension PlatformViewControllerRepresentable where PlatformViewControllerType == UIViewControllerType {
@@ -23,13 +23,13 @@ public extension PlatformViewControllerRepresentable where PlatformViewControlle
 
 #elseif canImport(AppKit)
 
-public protocol PlatformViewControllerRepresentable: NSViewControllerRepresentable {
+@MainActor public protocol PlatformViewControllerRepresentable: NSViewControllerRepresentable {
     associatedtype PlatformViewControllerType: NSViewController
     typealias Context = NSViewControllerRepresentableContext<Self>
 
-    func makePlatformViewController(context: Context) -> PlatformViewControllerType
+    @MainActor func makePlatformViewController(context: Context) -> PlatformViewControllerType
     
-    func updatePlatformViewController(_ view: PlatformViewControllerType, context: Context)
+    @MainActor func updatePlatformViewController(_ view: PlatformViewControllerType, context: Context)
 }
 
 public extension PlatformViewControllerRepresentable where PlatformViewControllerType == NSViewControllerType {
